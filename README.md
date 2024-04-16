@@ -26,6 +26,38 @@ If the transaction amount is less than 200, no password is required. However, fo
 the user must enter a password. Additionally, the user can update the password. After three unsuccessful attempts, the card is blocked.
 
 
+### Designing a Java Card Applet 
+
+#### Architecture and Class Design:
+- The architecture and classes of the applet are designed to ensure modularity, encapsulation, and extensibility.
+- Each class within the applet serves a specific purpose and contributes to the overall functionality.
+- Careful consideration is given to the interaction between different classes and how they collaborate to achieve the desired objectives.
+
+#### `selectingApplet()` Method:
+- The `selectingApplet()` method is utilized within the applet's `process()` method to differentiate the APDU command "select" from all other APDUs.
+- This method plays a crucial role in handling the selection of the applet by the card or terminal.
+
+#### `getShareableInterfaceObject()` Method:
+- The `getShareableInterfaceObject()` method is invoked by the Java Card Runtime Environment (JCRE) to obtain a shareable interface object from the server applet for a client applet.
+- This method facilitates communication between different applets, allowing them to share resources or exchange data securely.
+
+### Designing a Java Card Applet
+
+#### Defining the Interface:
+- It is essential to define the interface between the applet and the client application (Card Acceptance Device/CAD or terminal).
+- The communication between an applet and a CAD primarily involves a set of Application Protocol Data Units (APDUs).
+- These APDU commands must be carefully designed and supported by both the applet and the client application.
+- In our case, the INS (Instruction) part of the APDU will contain the following commands:
+
+1. `READ`: Read data from the applet.
+2. `WRITE`: Write data to the applet.
+3. `VERIFY`: Verify a password or authentication token.
+4. `UPDATE`: Update information stored in the applet.
+5. `RESET`: Reset the applet or restore default settings.
+
+
+Designing a Java Card applet involves creating a robust architecture, implementing essential methods such as `selectingApplet()` and `getShareableInterfaceObject()`, and defining a clear interface for communication with the client application. By carefully designing the communication protocol and supporting the necessary commands, seamless interaction between the applet and the client application can be ensured.
+
 
 #### Conclusion:
 Java Card technology offers a versatile platform for developing secure and interoperable smart card applications. The provided exercises 
